@@ -1,5 +1,5 @@
 /* @import 'bootstrap/dist/css/bootstrap.min.css'; */
-import tailwindcss from '@tailwindcss/vite'
+@import "tailwindcss";
 
 .propsData{
   background-color: green;
@@ -10,7 +10,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 @layer components{
   .heading{
-    @apply bg-pink-700 text-white font-black text-4xl p-4 text-center
+    @apply  bg-pink-700 text-white font-black text-4xl p-4 text-center
   }
   .btn{
     @apply bg-blue-700 text-white 
