@@ -1,0 +1,111 @@
+/* App.css */
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #213547;
+  background-color: #f4f7f6;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  min-height: 100vh;     
+  background-color: #f4f7f6;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #646cff;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+}
+
+.card {
+  padding: 2em;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #646cff;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+button:hover {
+  background-color: #535bf2;
+}
+
+.info {
+  text-align: left;
+  padding: 1rem 2rem;
+  background: #e2e8f0;
+  border-radius: 8px;
+}
+
+.info h3 {
+  color: #2d3748;
+}
+
+.info ul {
+  padding-left: 1.2rem;
+}
+
+.footer {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: #888;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  }
+  .card {
+    background-color: #1a1a1a;
+  }
+  .info {
+    background-color: #2d2d2d;
+  }
+  .info h3 {
+    color: #fff;
+  }
+}
