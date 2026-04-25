@@ -1,40 +1,25 @@
-import { useState } from 'react';
-import './App.css';
+import React from 'react';
+// 1. Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+// 2. Import your Form component
+import RegistrationForm from './RegistrationForm';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="container">
-      <header className="header">
-        <h1>My Vite + React Project</h1>
-        <p>A simple demonstration of HTML structure in React.</p>
-      </header>
+    <div className="App" style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
+      <nav className="navbar navbar-dark bg-dark mb-4">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">My React App</span>
+        </div>
+      </nav>
 
-      <main className="content">
-        <section className="card">
-          <h2>Interactive Counter</h2>
-          <p>The current count is: <strong>{count}</strong></p>
-          <button onClick={() => setCount(count + 1)}>
-            Increment
-          </button>
-          <button onClick={() => setCount(0)} style={{ marginLeft: '10px' }}>
-            Reset
-          </button>
-        </section>
-
-        <section className="info">
-          <h3>Why use Vite?</h3>
-          <ul>
-            <li>Instant Hot Module Replacement (HMR)</li>
-            <li>Lightning fast cold server start</li>
-            <li>Optimized build process</li>
-          </ul>
-        </section>
+      <main>
+        {/* 3. Render the Form component */}
+        <RegistrationForm />
       </main>
 
-      <footer className="footer">
-        <p>&copy; 2026 React Dev Environment</p>
+      <footer className="text-center mt-5 pb-4 text-muted">
+        <small>Beginner React Form Project &copy; 2026</small>
       </footer>
     </div>
   );
