@@ -18,7 +18,6 @@ body {
   vertical-align: middle;
 }
 
-/* Responsive adjustments [cite: 82] */
 @media (max-width: 768px) {
   .w-25, .w-50 {
     width: 100% !important;

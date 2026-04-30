@@ -6,13 +6,12 @@ import Search from './componets/search';
 import Pagination from './componets/Pagination';
 
 function App() {
-  const [data, setData] = useState([]); // Original data [cite: 65]
-  const [search, setSearch] = useState(""); // Search state [cite: 68]
-  const [sort, setSort] = useState("asc"); // Sorting state [cite: 71]
-  const [currentPage, setCurrentPage] = useState(1); // Pagination [cite: 76]
-  const limit = 5; // 5 rows per page [cite: 49]
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("asc"); 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const limit = 5; 
 
-  // 1. Fetch Data from API [cite: 62, 64]
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
@@ -20,20 +19,17 @@ function App() {
       .catch(err => console.error("Error fetching data:", err));
   }, []);
 
-  // 2. Search Logic [cite: 67, 68, 69]
   const filteredData = data.filter(user =>
     user.name.toLowerCase().includes(search.toLowerCase()) ||
     user.email.toLowerCase().includes(search.toLowerCase())
   );
 
-  // 3. Sorting Logic [cite: 70, 71, 73, 74]
   const sortedData = [...filteredData].sort((a, b) => {
     return sort === "asc" 
       ? a.name.localeCompare(b.name) 
       : b.name.localeCompare(a.name);
   });
 
-  // 4. Pagination Logic [cite: 75, 76]
   const startIndex = (currentPage - 1) * limit;
   const paginatedData = sortedData.slice(startIndex, startIndex + limit);
   const totalPages = Math.ceil(sortedData.length / limit);

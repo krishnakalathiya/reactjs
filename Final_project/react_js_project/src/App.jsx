@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import './App.css'
-import { MantuPage } from '../componets/home.jsx'
+import './index.css'
+import { Header } from './componets/Header.jsx'
 
 function App() {
 
 
   return (
     <>
-     <MantuPage/>
+     <Header/>
     </>
   )
 }

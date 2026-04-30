@@ -1,0 +1,169 @@
+:root {
+  --primary-blue: #3b52e1;
+  --dark-bg: #11141c;
+  --text-dark: #1a1a1a;
+  --text-gray: #666;
+  --yellow-accent: #f7c348;
+}
+
+.header-container {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark-bg);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  color: var(--text-dark);
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4d4d;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  margin: 0 2%;
+  background-color: var(--dark-bg);
+  border-radius: 20px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.hero-content {
+  flex: 1;
+  z-index: 2;
+}
+
+.sale-tag {
+  background: var(--yellow-accent);
+  color: var(--text-dark);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 20px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.shop-now-btn {
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Image Circular Effect */
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.circle-bg {
+  width: 350px;
+  height: 350px;
+  background: var(--yellow-accent);
+  border-radius: 50%;
+  border: 15px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-model {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Simple Decor Elements */
+.decor {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 24px;
+}
+
+.decor-plus {
+  bottom: 40px;
+  left: 40px;
+}
+
+.decor-zig-zag {
+  top: 40px;
+  left: 40px;
+  width: 40px;
+  height: 10px;
+  border-bottom: 3px dotted white;
+}

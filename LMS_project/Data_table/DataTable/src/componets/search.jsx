@@ -6,7 +6,7 @@ const Search = ({ setSearch, setCurrentPage }) => {
       placeholder="Search by name or email..." 
       onChange={(e) => {
         setSearch(e.target.value);
-        setCurrentPage(1); // Reset to first page on search
+        setCurrentPage(1); 
       }}
     />
   );
