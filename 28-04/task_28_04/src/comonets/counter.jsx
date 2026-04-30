@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
 const Counter = () => {
-  // Initialize state at 0
   const [count, setCount] = useState(0);
 
-  // Function to handle increment
   const increment = () => {
     setCount(count + 1);
   };
 
-  // Function to handle decrement
   const decrement = () => {
     setCount(count - 1);
   };

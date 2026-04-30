@@ -20,14 +20,14 @@ function App() {
         onClick={handleDecrement} 
         style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
       >
-        - Decrement
+         Decrement
       </button>
 
       <button 
         onClick={handleIncrement} 
         style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer', marginLeft: '10px' }}
       >
-        + Increment
+         Increment
       </button>
     </div>
   );
