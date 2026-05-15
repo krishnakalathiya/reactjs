@@ -1,9 +1,19 @@
 import React from 'react'
+import { useSelector , useDispatch } from 'react-redux'
+import ProductCard from '../componets/productcard'
 
-const Home = () => {
+const Cart = () => {
+
+  const cartData = useSelector((state) => state.cart.cartItem)  
+
+  console.log("cartData" , cartData)
+
   return (
-    <div>Home</div>
+    <>
+    <div>Cart</div>
+    <ProductCard productData={cartData}/>
+    </>
   )
 }
 
-export default Home
+export default Cart
