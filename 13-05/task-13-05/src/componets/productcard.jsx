@@ -17,7 +17,8 @@ const ProductCard = ({productData}) => {
             className=" w-[300px] bg-neutral-primary-soft p-2 border border-default rounded-base shadow-xs"
             key={item.id}
           >
-            <button onClick={() => dispatch(addTowishlist(item))}>
+            <button onClick={() => dispatch(addTowishlist(item))}
+               className="wishlist-btn">
                 <i class="fa-regular fa-heart"></i>
             </button>
             <a href="#">

@@ -8,3 +8,18 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.wishlist-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.wishlist-btn i {
+  transition: color 0.3s ease;
+}
+
+.wishlist-btn:hover i {
+  color: red;
+   font-weight: 900;
+}
