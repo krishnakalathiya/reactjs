@@ -1,32 +1,49 @@
 import React from "react";
 import { addToCart } from "../features/cart/cartslice";
-import { useDispatch } from "react-redux";
-import { addTowishlist } from "../features/wishlist/wishlistsclice";
+import { addTowishlist, removewishlist } from "../features/wishlist/wishlistsclice"; 
+import { useDispatch, useSelector } from "react-redux";
 
-const ProductCard = ({productData}) => {
+const ProductCard = ({ productData }) => {
 
-  console.log("productData" , productData);
+  console.log("productData", productData);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state) => state.wishlist.wishlist);
 
   return (
     <div className="flex flex-wrap gap-4">
       {productData.map((item) => {
+        const isFavorite = wishlistItems.some((wishItem) => wishItem.id === item.id);
+
+        const handleWishlistClick = (e) => {
+          e.preventDefault(); 
+          if (isFavorite) {
+            dispatch(removewishlist(item.id));
+          } else {
+            dispatch(addTowishlist(item));
+          }
+        };
+
         return (
           <div
-            className=" w-[300px] bg-neutral-primary-soft p-2 border border-default rounded-base shadow-xs"
+            className=" w-[300px] bg-neutral-primary-soft p-2 border border-default rounded-base shadow-xs relative"
             key={item.id}
           >
-            <button onClick={() => dispatch(addTowishlist(item))}
-               className="wishlist-btn">
-                <i class="fa-regular fa-heart"></i>
-            </button>
             <a href="#">
               <img
                 className="rounded-base mb-6"
                 src={item.images[0]}
                 alt="product image"
               />
+              <div className="absolute top-6 right-6 z-10">
+                <button type="button" onClick={handleWishlistClick}>
+                  <i 
+                    className={`${
+                      isFavorite ? "fa-solid fa-heart text-red-500" : "fa-regular fa-heart"
+                    } text-xl`} 
+                  />
+                </button>
+              </div>
             </a>
             <div>
               <div className="flex items-center space-x-3 mb-6">

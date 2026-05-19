@@ -1,11 +1,13 @@
 import './App.css'
-import Layout from './pages/layout'
+import Layout from './pages/Layout'
+import Toast from './componets/toast'
 
 function App() {
 
   return (
     <>
       <Layout/>
+      <Toast/>
     </>
   )
 }
