@@ -1,18 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-const Navbar = () => {
-
-  const cartLength = useSelector((state) => state.cart.cartItem.length)
-
-  console.log(cartLength);
-  
+const Navbar = ({ user, onLogout }) => {
   return (
     <nav className=" fixed w-full z-20 top-0 start-0 border-b border-default bg-gray-500">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 container">
         <NavLink
-         to="/"
+          to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
@@ -68,30 +62,56 @@ const Navbar = () => {
                 Product
               </NavLink>
             </li>
-            <li className="relative">
+            <li>
               <NavLink
                 to="/cart"
                 className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
-
                 Cart
-                <span className="absolute -top-1.5 -right-2.5 text-white h-4 w-4 rounded-full bg-black text-center text-sm flex items-center justify-center">{cartLength}</span>
               </NavLink>
             </li>
+            {!user ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/login"
+                    className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                  >
+                    SignIn
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/register"
+                    className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                  >
+                    SignUp
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <span className="block py-2 px-3 text-white font-bold bg-blue-500 rounded md:bg-transparent md:text-blue-300 md:p-0">
+                    Hi, {user.name}
+                  </span>
+                </li>
+                <li>
+                  <button
+                    onClick={onLogout}
+                    className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-red-500 md:p-0 md:dark:hover:bg-transparent font-semibold"
+                  >
+                    SignOut
+                  </button>
+                </li>
+              </>
+            )}
             <li>
               <NavLink
-                to="/login"
+                to="/wishlist"
                 className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
-                SignIn
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/register"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-              >
-                SignUp
+                wishlist
               </NavLink>
             </li>
           </ul>
