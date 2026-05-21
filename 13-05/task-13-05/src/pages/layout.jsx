@@ -6,26 +6,25 @@ import Cart from "./cart";
 import Error from "./error";
 import Navbar from "../componets/navbar";
 import Footer from "../componets/footer";
-import Wishlist from "./wishlist";
-import { BrowserRouter as Router , Routes , Route } from "react-router-dom";
+import WishlistData from "./wishlist";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
-const Layout = () => {
+const Layout = ({ user, onLogout }) => {
   return (
     <Router>
-      <Navbar/>
+      <Navbar user={user} onLogout={onLogout} />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/product" element={<Product/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/wishlist" element={<Wishlist/>}/>
-        <Route path="*" element={<Error/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<WishlistData />} />
+        <Route path="*" element={<Error />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

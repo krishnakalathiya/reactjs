@@ -1,106 +1,42 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser, logoutUser } from "../features/auth/authSlice";
-import { toast } from "react-toastify";
+import React, { useState } from 'react';
 
-const Login = () => {
-  const dispatch = useDispatch();
+function LoginModal({ onLoginSuccess }) {
+  const [inputName, setInputName] = useState('');
 
-  const { isLogin, user } = useSelector((state) => state.auth);
-
-  const [name, setName] = useState("");
-  const [showModal, setShowModal] = useState(false);
-
-  // LOGIN FUNCTION
-  const handleLogin = () => {
-    if (!name) {
-      toast.error("Please Enter Username");
-      return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputName.trim() !== '') {
+      onLoginSuccess({ name: inputName });
     }
-
-    dispatch(loginUser(name));
-    toast.success("Login Successfully!!");
-
-    setShowModal(false);
-    setName("");
-  };
-
-  // LOGOUT FUNCTION
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    toast.error("Logout Successfully!!");
   };
 
   return (
-    <>
-      <div className="mt-20 flex justify-center items-center">
-
-        {isLogin ? (
-          // AFTER LOGIN
-          <div className="flex flex-col items-center gap-4 bg-green-500 p-6 rounded-lg">
-            <h2 className="text-white text-2xl font-bold">
-              Welcome {user}
-            </h2>
-
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg"
-            >
-              Logout
-            </button>
-          </div>
-        ) : (
-          // LOGIN BUTTON
-          <button
-            onClick={() => setShowModal(true)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
-          >
-            Login
-          </button>
-        )}
-      </div>
-
-      {/* LOGIN MODAL */}
-      {showModal && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-          
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
-            
-            {/* CLOSE BUTTON */}
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-2 right-4 text-2xl font-bold"
-            >
-              ×
-            </button>
-
-            <h2 className="text-2xl font-bold text-center mb-5">
-              Login Form
-            </h2>
-
-            {/* USERNAME INPUT */}
-            <input
-              type="text"
-              value={name}
-              name="username"
-              placeholder="Enter Username"
-              onChange={(e) => setName(e.target.value)}
-              className="w-full border border-gray-300 p-3 rounded-lg mb-4"
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+      <div className="bg-teal-200  rounded-2xl shadow-2xl p-8 max-w-sm w-full border border-gray-100">
+        <h2 className="text-2xl font-bold text-center text-gray-950 mb-2">Welcome!</h2>
+        <p className="text-sm text-center text-gray-950 mb-6">Please enter your name to log in</p>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <input 
+              type="text" 
+              placeholder="Enter your name here..." 
+              value={inputName}
+              onChange={(e) => setInputName(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400 transition"
+              required
             />
-
-            {/* SUBMIT BUTTON */}
-            <button
-              onClick={handleLogin}
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg"
-            >
-              Submit
-            </button>
-
           </div>
-        </div>
-      )}
-    </>
+          <button 
+            type="submit" 
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-blue-500/30 transition duration-200 cursor-pointer text-center"
+          >
+            Log In
+          </button>
+        </form>
+      </div>
+    </div>
   );
-};
+}
 
-export default Login;
+export default LoginModal;

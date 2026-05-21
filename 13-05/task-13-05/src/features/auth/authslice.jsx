@@ -1,26 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { create } from "axios";
 
-
-const authSlice = createSlice({
+const authslice = createSlice({
   name:"auth",
   initialState:{
-    isLogin:false,
+    islogin:false,
     user:null
   },
   reducers:{
-    loginUser:(state , action) => {
-      state.isLogin = true;
+    loginUser:(state, action) =>{
+      state.islogin = true;
       state.user = action.payload
-    } , 
+    },
 
-    logoutUser:(state) => {
+    logoutuser:(state) => {
       state.isLogin = false;
       state.user = null
     }
   }
 })
 
-export const {loginUser , logoutUser} = authSlice.actions
+export const {loginUser,logoutuser} = authslice.actions
 
-export default authSlice.reducer
+export default authslice.reducer
