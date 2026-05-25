@@ -16,7 +16,7 @@ const AddUser = () => {
     };
 
     await axios
-      .post("http://localhost:3000/users", user)
+      .post("http://localhost:3001/users", user)
       .then((data) => console.log(data));
 
     alert("User Added!!");

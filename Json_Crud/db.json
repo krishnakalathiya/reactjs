@@ -1,4 +1,10 @@
 {
-  "users": []
-  // "$schema": "./node_modules/json-server/schema.json"
+  "users": [
+    {
+      "name": "kalathiya krishna",
+      "email": "abc@gmail.com",
+      "id": "xBEIh1KNcyc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -13,7 +13,7 @@ const EditUser = () => {
   const [email , setEmail] = useState("")
 
   async function getSingleUser(){
-    let res = await axios.get(`http://localhost:3000/users/${id}`)
+    let res = await axios.get(`http://localhost:3001/users/${id}`)
     let data = res.data
     setName(data.name)
     setEmail(data.email)    
@@ -30,7 +30,7 @@ const EditUser = () => {
       email
     }
 
-    let res = await axios.put(`http://localhost:3000/users/${id}`, updatedUser)
+    let res = await axios.put(`http://localhost:3001/users/${id}`, updatedUser)
 
     alert("User Updated!")
     navigate('/view')
