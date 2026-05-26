@@ -2,8 +2,23 @@
   "users": [
     {
       "name": "kalathiya krishna",
+      "email": "krishnakalathiya03@gmail.com",
+      "id": "wX-yQpwnEKQ"
+    },
+    {
+      "name": "abc",
       "email": "abc@gmail.com",
-      "id": "xBEIh1KNcyc"
+      "id": "4JWzxCK72jg"
+    },
+    {
+      "name": "xyz",
+      "email": "Vivekkalathiya30@gmail.com",
+      "id": "K_GU9vm5cTo"
+    },
+    {
+      "name": "qwwdddf",
+      "email": "abc@gmail.com",
+      "id": "V8mD9OlvYV8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
