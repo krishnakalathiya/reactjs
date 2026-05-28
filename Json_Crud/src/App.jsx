@@ -5,6 +5,7 @@ import AddUser from "./pages/AddUser";
 import ViewUser from "./pages/ViewUser";
 import EditUser from "./pages/EditUser";
 import Navbar from "./components/Navbar";
+import { useAuth0 } from "@auth0/auth0-react";  
 
 function App() {
   return (
