@@ -1,7 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+  const {
+    isLoading,
+    isAuthenticated,
+    user,
+    loginWithRedirect: login,
+    logout: auth0Logout,
+    error,
+  } = useAuth0();
+  
+
+  const signup = () =>
+    login({ authorizationParams: { screen_hint: "signup" } });
+
+  const logout = () =>
+    auth0Logout({ logoutParams: { returnTo: window.location.origin } });
+
+  if (isLoading) return "Loading...";
+
+
   return (
     <nav className="bg-neutral-primary  w-full z-20 top-0 start-0 border-b border-default">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -75,14 +95,7 @@ const Navbar = () => {
                   Earnings
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="#"
-                  className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                >
-                  SignIn
-                </NavLink>
-              </li>
+           
             </ul>
           </div>
           <button
@@ -125,7 +138,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-             <li>
+            <li>
               <NavLink
                 to="/view"
                 className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
@@ -141,7 +154,42 @@ const Navbar = () => {
                 Add
               </NavLink>
             </li>
-           
+               {
+                isAuthenticated ? (
+                  <li>
+                    <p>{user.email}</p>
+                    <button
+                      onClick={logout}
+                      className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                ) : (
+                  <>
+                  <li>
+                    <NavLink
+                      to="#"
+                      className="inline-flex items-center w-full  hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+                      onClick={login}
+                    >
+                      Login
+                    </NavLink>
+                    
+                    {error && <p>Error: {error.message}</p>}
+                  </li>
+                  <li>
+                     <NavLink
+                      to="#"
+                      className="inline-flex items-center w-full hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+                      onClick={signup}   
+                    >
+                      Register
+                    </NavLink>
+                  </li>
+                  </>
+                )
+              }
           </ul>
         </div>
       </div>
