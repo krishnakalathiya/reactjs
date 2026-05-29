@@ -10,7 +10,8 @@ createRoot(document.getElementById('root')).render(
       domain="dev-o684zpohddmezqdg.us.auth0.com"
       clientId="rv4tBbnIcyPy2dWacmSCmL8Ta9irTCfp"
       authorizationParams={{redirect_uri: window.location.origin }}
-    ></Auth0Provider>
+    >
     <App />
+    </Auth0Provider>
   </StrictMode>,
 )

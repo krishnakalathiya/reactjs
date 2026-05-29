@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -13,13 +12,11 @@ const Navbar = () => {
   } = useAuth0();
   
 
-  const signup = () =>
-    login({ authorizationParams: { screen_hint: "signup" } });
+  const signup = () => login({ authorizationParams: { screen_hint: "signup" } });
 
-  const logout = () =>
-    auth0Logout({ logoutParams: { returnTo: window.location.origin } });
+  const logout = () => auth0Logout({ logoutParams: { returnTo: window.location.origin } });
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return "Loading..."
 
 
   return (
