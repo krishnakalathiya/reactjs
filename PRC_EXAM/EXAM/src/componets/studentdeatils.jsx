@@ -13,132 +13,111 @@ export default function StudentDetails({ student }) {
     setEditMode(false);
   };
 
+  // --- EDIT MODE: INLINE GRID FORM ---
   if (editMode) {
     return (
-      <div className="card shadow-lg p-4 border-0 text-start" style={{ width: '480px', borderRadius: '16px', backgroundColor: '#F8FAFC' }}>
-        <div className="d-flex align-items-center gap-2 mb-3">
-          <span style={{ color: '#0A4B8F', fontSize: '1.25rem' }}>📝</span>
-          <h6 className="fw-bold mb-0 text-dark" style={{ letterSpacing: '0.5px' }}>Modify Core Identity</h6>
-        </div>
-        <form onSubmit={handleSave} className="row g-2">
-          <div className="col-12">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.name} onChange={e => setFields({...fields, name: e.target.value.toUpperCase()})} placeholder="NAME" required />
-          </div>
-          <div className="col-6">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.rollNumber} onChange={e => setFields({...fields, rollNumber: e.target.value})} placeholder="ROLL NO" required />
-          </div>
-          <div className="col-6">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.class} onChange={e => setFields({...fields, class: e.target.value})} placeholder="CLASS" required />
-          </div>
-          <div className="col-6">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.grade} onChange={e => setFields({...fields, grade: e.target.value})} placeholder="GRADE" required />
-          </div>
-          <div className="col-6">
-            <input type="number" className="form-control form-control-sm border-secondary-subtle" value={fields.age} onChange={e => setFields({...fields, age: e.target.value})} placeholder="AGE" />
-          </div>
-          <div className="col-12">
-            <input type="email" className="form-control form-control-sm border-secondary-subtle" value={fields.email} onChange={e => setFields({...fields, email: e.target.value})} placeholder="EMAIL" />
-          </div>
-          <div className="col-12">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.phone} onChange={e => setFields({...fields, phone: e.target.value})} placeholder="PHONE" />
-          </div>
-          <div className="col-12">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.address} onChange={e => setFields({...fields, address: e.target.value})} placeholder="ADDRESS" />
-          </div>
-          <div className="col-12">
-            <input type="text" className="form-control form-control-sm border-secondary-subtle" value={fields.image} onChange={e => setFields({...fields, image: e.target.value})} placeholder="IMAGE URL" />
-          </div>
-          <div className="col-12 d-flex gap-2 mt-3">
-            <button type="submit" className="btn btn-sm text-white flex-grow-1 fw-bold" style={{ backgroundColor: '#0A4B8F', borderRadius: '8px' }}>Save Changes</button>
-            <button type="button" className="btn btn-light btn-sm border flex-grow-1 fw-bold" style={{ borderRadius: '8px' }} onClick={() => setEditMode(false)}>Cancel</button>
-          </div>
-        </form>
-      </div>
+      <tr style={{ backgroundColor: '#F8FAFC', verticalAlign: 'middle' }}>
+        <td colSpan="6" className="p-3">
+          <form onSubmit={handleSave} className="row g-2 align-items-center m-0">
+            <div className="col-md-3">
+              <input type="text" className="form-control form-control-sm mb-1" value={fields.name} onChange={e => setFields({...fields, name: e.target.value.toUpperCase()})} placeholder="Name" required />
+              <input type="text" className="form-control form-control-sm" value={fields.rollNumber} onChange={e => setFields({...fields, rollNumber: e.target.value})} placeholder="Roll No" required />
+            </div>
+            <div className="col-md-1.5">
+              <input type="text" className="form-control form-control-sm" value={fields.class} onChange={e => setFields({...fields, class: e.target.value})} placeholder="Class" required />
+            </div>
+            <div className="col-md-1.5">
+              <input type="text" className="form-control form-control-sm" value={fields.grade} onChange={e => setFields({...fields, grade: e.target.value})} placeholder="Grade" required />
+            </div>
+            <div className="col-md-1">
+              <input type="number" className="form-control form-control-sm" value={fields.age} onChange={e => setFields({...fields, age: e.target.value})} placeholder="Age" />
+            </div>
+            <div className="col-md-3">
+              <input type="email" className="form-control form-control-sm mb-1" value={fields.email || ''} onChange={e => setFields({...fields, email: e.target.value})} placeholder="Email" />
+              <input type="text" className="form-control form-control-sm" value={fields.phone || ''} onChange={e => setFields({...fields, phone: e.target.value})} placeholder="Phone" />
+            </div>
+            <div className="col-md-2 d-flex gap-1 justify-content-end">
+              <button type="submit" className="btn btn-sm text-white fw-bold px-2.5" style={{ backgroundColor: '#0A4B8F', borderRadius: '6px' }}>Save</button>
+              <button type="button" className="btn btn-sm btn-light border fw-bold px-2.5" style={{ borderRadius: '6px' }} onClick={() => setEditMode(false)}>Cancel</button>
+            </div>
+          </form>
+        </td>
+      </tr>
     );
   }
 
+  // --- VIEW MODE: INDEPENDENT SEPARATE CELL BLOCKS ---
   return (
-    <div className="card shadow-sm border-0 overflow-hidden" 
-         style={{ width: '480px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+    <tr style={{ verticalAlign: 'middle', backgroundColor: '#FFFFFF' }}>
       
-      <div className="d-flex align-items-stretch">
-        
-        <div className="d-flex flex-column align-items-center justify-content-between p-3 text-center text-white position-relative" 
-             style={{ backgroundColor: '#0A4B8F', width: '160px' }}>
-          
-          <div className="position-absolute top-0 start-0 h-100" style={{ width: '5px', backgroundColor: '#4CAF50' }}></div>
-          
-          <div className="w-100 ps-1">
-            <div className="fw-extrabold tracking-wider text-start" style={{ fontSize: '0.75rem', letterSpacing: '1px' }}>🎓 STUDENT</div>
-            <div className="text-white-50 text-start" style={{ fontSize: '0.6rem', fontWeight: '600' }}>ID: {student.rollNumber}</div>
-          </div>
-
-          <div className="my-3 shadow-sm" style={{ padding: '3px', backgroundColor: '#FFFFFF', borderRadius: '12px' }}>
-            <img 
-              src={student.image || 'https://via.placeholder.com/130'} 
-              alt={student.name} 
-              style={{ width: '100px', height: '115px', objectFit: 'cover', borderRadius: '9px', display: 'block' }}
-            />
-          </div>
-
-          <div className="w-100 rounded py-1 px-2 mb-1" style={{ background: 'linear-gradient(90deg, #D9A74A 0%, #ECC970 100%)', color: '#1A1100', fontSize: '0.65rem', fontWeight: '800' }}>
-            A.Y. 2026-2027
-          </div>
-        </div>
-
-        <div className="p-3 flex-grow-1 d-flex flex-column justify-content-between" style={{ backgroundColor: '#F8FAFC' }}>
-          
-          <div>
-            <span className="badge text-white font-monospace mb-1" style={{ backgroundColor: '#4CAF50', fontSize: '0.65rem' }}>
-              GRADE {student.grade}
-            </span>
-            <h5 className="fw-bold text-dark text-uppercase mb-0" style={{ letterSpacing: '0.3px', color: '#1E293B', fontSize: '1.2rem' }}>
+      {/* COLUMN 1: STUDENT INFO (Matches 30% header weight) */}
+      <td className="p-3 border-bottom" style={{ width: '30%' }}>
+        <div className="d-flex align-items-center">
+          <img 
+            src={student.image || 'https://via.placeholder.com/130'} 
+            alt={student.name} 
+            style={{ width: '42px', height: '42px', objectFit: 'cover', borderRadius: '50%', border: '1px solid #E2E8F0', marginRight: '14px', flexShrink: 0 }}
+          />
+          <div className="text-truncate">
+            <h6 className="fw-bold text-dark text-uppercase mb-0 text-truncate" style={{ fontSize: '0.9rem', letterSpacing: '0.3px' }}>
               {student.name}
-            </h5>
-            <p className="text-secondary fw-semibold small mb-2">Class Assignment: {student.class}</p>
-            <hr className="my-2 opacity-25" />
+            </h6>
+            <small className="text-muted fw-semibold">ID: {student.rollNumber}</small>
           </div>
-
-          <div className="d-flex flex-column gap-1.5 my-2" style={{ fontSize: '0.78rem', color: '#475569' }}>
-            <div className="d-flex align-items-center gap-2 text-truncate">
-              <span className="text-muted" style={{ width: '18px' }}>🎂</span>
-              <span><strong>Age:</strong> {student.age} Years</span>
-            </div>
-            <div className="d-flex align-items-center gap-2 text-truncate">
-              <span className="text-muted" style={{ width: '18px' }}>📞</span>
-              <span>{student.phone || 'No Data'}</span>
-            </div>
-            <div className="d-flex align-items-center gap-2 text-truncate">
-              <span className="text-muted" style={{ width: '18px' }}>✉️</span>
-              <span className="text-lowercase">{student.email || 'No Data'}</span>
-            </div>
-            <div className="d-flex align-items-center gap-2 text-truncate">
-              <span className="text-muted" style={{ width: '18px' }}>📍</span>
-              <span className="text-muted">{student.address || 'Address Unspecified'}</span>
-            </div>
-          </div>
-
-          {/* Integrated Control Strip */}
-          <div className="d-flex gap-2 mt-2 pt-2 border-top border-light-subtle">
-            <button 
-              className="btn btn-sm btn-outline-secondary flex-grow-1 fw-bold d-flex align-items-center justify-content-center gap-1" 
-              style={{ borderRadius: '8px', fontSize: '0.75rem', padding: '6px 12px' }} 
-              onClick={() => setEditMode(true)}
-            >
-              ⚙️ Modify Card
-            </button>
-            <button 
-              className="btn btn-sm btn-outline-danger d-flex align-items-center justify-content-center" 
-              style={{ borderRadius: '8px', padding: '6px 10px' }} 
-              onClick={() => { if(window.confirm(`Delete ${student.name}?`)) dispatch(deleteStudent(student.id)) }}
-            >
-              🗑️
-            </button>
-          </div>
-
         </div>
+      </td>
 
-      </div>
-    </div>
+      {/* COLUMN 2: CLASS ASSIGNMENT (Matches 12% header weight) */}
+      <td className="p-3 border-bottom text-secondary fw-semibold small" style={{ width: '12%' }}>
+         <span className="badge bg-light text-secondary border px-2 py-1" style={{ borderRadius: '6px', fontWeight: '600' }}>
+           Class {student.class}
+         </span>
+      </td>
+
+      {/* COLUMN 3: GRADE LEVEL BADGE (Matches 12% header weight) */}
+      <td className="p-3 border-bottom" style={{ width: '12%' }}>
+        <span className="badge text-white font-monospace px-2 py-1.5" style={{ backgroundColor: '#4CAF50', fontSize: '0.7rem', borderRadius: '6px' }}>
+          GRADE {student.grade}
+        </span>
+      </td>
+
+      {/* COLUMN 4: AGE VALUE (Matches 10% header weight) */}
+      <td className="p-3 border-bottom text-dark fw-semibold small" style={{ width: '10%' }}>
+        {student.age ? `${student.age} Yrs` : '—'}
+      </td>
+
+      {/* COLUMN 5: STRIP CONTACT BLOCKS (Matches 21% header weight) */}
+      <td className="p-3 border-bottom" style={{ width: '21%' }}>
+        <div className="d-flex flex-column gap-1" style={{ fontSize: '0.82rem', color: '#475569' }}>
+          <div className="text-truncate">
+            <span className="text-muted me-1.5">📞</span>{student.phone || <em className="text-muted opacity-50">None</em>}
+          </div>
+          <div className="text-truncate text-lowercase text-secondary">
+            <span className="text-muted me-1.5">✉️</span>{student.email || <em className="text-muted opacity-50">None</em>}
+          </div>
+        </div>
+      </td>
+
+      {/* COLUMN 6: CONTROL ACTIONS BUTTONS (Matches 15% header weight) */}
+      <td className="p-3 border-bottom text-end" style={{ width: '15%' }}>
+        <div className="d-inline-flex gap-1.5">
+          <button 
+            className="btn btn-sm btn-outline-secondary fw-semibold d-flex align-items-center gap-1" 
+            style={{ borderRadius: '6px', fontSize: '0.75rem', padding: '6px 12px', backgroundColor: '#FFF' }} 
+            onClick={() => { setFields({ ...student }); setEditMode(true); }}
+          >
+            ⚙️ Edit
+          </button>
+          <button 
+            className="btn btn-sm btn-outline-danger d-flex align-items-center justify-content-center" 
+            style={{ borderRadius: '6px', padding: '6px 10px', backgroundColor: '#FFF' }} 
+            onClick={() => { if(window.confirm(`Delete ${student.name}?`)) dispatch(deleteStudent(student.id)) }}
+          >
+            🗑️
+          </button>
+        </div>
+      </td>
+
+    </tr>
   );
 }

@@ -2,10 +2,10 @@
   "students": [
     {
       "id": "1",
-      "name": "JANE DOE",
+      "name": "heni das",
       "rollNumber": "101",
       "phone": "+1-555-0199",
-      "email": "jane.doe@email.com",
+      "email": "heni.abc@email.com",
       "age": "20",
       "class": "CS-A",
       "grade": "A+",
@@ -14,10 +14,10 @@
     },
     {
       "id": "2",
-      "name": "JOHN SMITH",
+      "name": "ashit",
       "rollNumber": "102",
       "phone": "+1-555-0244",
-      "email": "john.smith@email.com",
+      "email": "ashit.abc@email.com",
       "age": "21",
       "class": "CS-B",
       "grade": "B",
@@ -26,15 +26,15 @@
     },
     {
       "name": "KRISHNA",
-      "rollNumber": "1234",
-      "phone": "1234567890",
-      "email": "krishnakalathiya03@gmail.com",
-      "age": "22",
-      "class": "ABC",
-      "grade": "A+",
+      "rollNumber": "105",
+      "phone": "12345677",
+      "email": "krishna03@gmail.com",
+      "age": "20",
+      "class": "CS-c",
+      "grade": "A",
       "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300",
-      "address": "abcc",
-      "id": "5BHgzNimML8"
+      "address": "asvjhhbjn",
+      "id": "6J25eLJroas"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

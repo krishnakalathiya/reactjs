@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStudents } from '../redux/store';
-import StudentDetails from './studentdeatils';
+import StudentDetails from './studentdeatils'; 
 
 export default function StudentList() {
   const dispatch = useDispatch();
@@ -33,7 +33,8 @@ export default function StudentList() {
     });
 
   return (
-    <div>
+    <div className="container-fluid px-4 py-2">
+      {/* Search and Filters Strip */}
       <div className="card p-3 mb-4 border-0 shadow-sm bg-white" style={{ borderRadius: '12px' }}>
         <div className="row g-3 align-items-center">
           <div className="col-md-4">
@@ -54,12 +55,33 @@ export default function StudentList() {
         </div>
       </div>
 
-      <div className="row justify-content-center">
-        {parsedStudents.map(student => (
-          <div key={student.id} className="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
-            <StudentDetails student={student} />
-          </div>
-        ))}
+      {/* --- CLEAN ALIGNED TABLE CONTAINER --- */}
+      <div className="table-responsive shadow-sm border border-light-subtle rounded-3" style={{ backgroundColor: '#FFFFFF' }}>
+        <table className="table align-middle mb-0" style={{ tableLayout: 'fixed', width: '100%' }}>
+          <thead className="table-light" style={{ fontSize: '0.8rem' }}>
+            <tr>
+              <th className="p-3 text-secondary fw-bold text-uppercase" style={{ width: '30%', letterSpacing: '0.5px' }}>Student Info</th>
+              <th className="p-3 text-secondary fw-bold text-uppercase" style={{ width: '12%', letterSpacing: '0.5px' }}>Class</th>
+              <th className="p-3 text-secondary fw-bold text-uppercase" style={{ width: '12%', letterSpacing: '0.5px' }}>Grade</th>
+              <th className="p-3 text-secondary fw-bold text-uppercase" style={{ width: '10%', letterSpacing: '0.5px' }}>Age</th>
+              <th className="p-3 text-secondary fw-bold text-uppercase" style={{ width: '21%', letterSpacing: '0.5px' }}>Contact</th>
+              <th className="p-3 text-secondary fw-bold text-uppercase text-end" style={{ width: '15%', letterSpacing: '0.5px' }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parsedStudents.length > 0 ? (
+              parsedStudents.map(student => (
+                <StudentDetails key={student.id} student={student} />
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="text-center p-5 text-muted fw-medium">
+                  No matching student records found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

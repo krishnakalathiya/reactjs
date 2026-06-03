@@ -13,7 +13,6 @@ const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 const API_URL = 'http://localhost:5000/students';
 
-// --- ACTIONS & ASYNC THUNKS ---
 export const fetchStudents = () => async (dispatch) => {
   dispatch({ type: FETCH_START });
   try {
